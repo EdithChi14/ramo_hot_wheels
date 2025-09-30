@@ -1073,23 +1073,47 @@ body {
     ];
 
     
-   function mostrarModalFlor(idx) {
-      const modal = document.getElementById('modal-flor');
-      const modalImg = document.getElementById('modal-img');
-      const modalMsg = document.getElementById('modal-msg');
-      modalImg.src = floresData[idx].img;
-      modalMsg.textContent = floresData[idx].msg;
-      modal.style.display = 'flex';
+  function mostrarModalFlor(idx) {
+  const modal = document.getElementById('modal-flor');
+  const modalImg = document.getElementById('modal-img');
+  const modalMsg = document.getElementById('modal-msg');
+  const specialText = document.querySelector('.special-text');
+
+  modalImg.src = floresData[idx].img;
+  modalMsg.textContent = floresData[idx].msg;
+  modal.style.display = 'flex';
+
+  if (specialText) {
+    specialText.style.display = 'none'; // ocultar texto al mostrar modal
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('cerrar-modal').onclick = function() {
+    const modal = document.getElementById('modal-flor'); // Define modal aquí
+    modal.style.display = 'none';
+
+    const specialText = document.querySelector('.special-text');
+    if (specialText) {
+      specialText.style.display = 'block';
+      specialText.style.opacity = '1';  // mostrar texto al cerrar modal
     }
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('cerrar-modal').onclick = function() {
-        document.getElementById('modal-flor').style.display = 'none';
-      };
-      // Cerrar modal al hacer click fuera de la imagen
-      document.getElementById('modal-flor').addEventListener('click', function(e) {
-        if (e.target === this) this.style.display = 'none';
-      });
-    });
+  };
+
+  // Cerrar modal al hacer click fuera de la imagen
+  document.getElementById('modal-flor').addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.style.display = 'none';
+
+      const specialText = document.querySelector('.special-text');
+      if (specialText) {
+        specialText.style.display = 'block';
+         specialText.style.opacity = '1';
+      }
+    }
+  });
+});
+
     onload = () => {
       const c = setTimeout(() => {
         document.body.classList.remove("not-loaded");
@@ -1150,5 +1174,6 @@ body {
     });
 
   </script>
+
 
 
