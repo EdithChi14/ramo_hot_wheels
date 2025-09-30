@@ -49,7 +49,7 @@ body {
 
 .flowers {
   position: relative;
-  transform: scale(0.7); /* Antes: 0.7, ahora más grande */
+  transform: scale(); /* Antes: 0.7, ahora más grande */
   z-index: 2;
 }
 
@@ -62,7 +62,7 @@ body {
 
 /* Aumenta la altura de los tallos */
 .flower__line {
-  height: 55vmin; /* Antes: 55vmin */
+  height: 75vmin; /* Antes: 55vmin */
   width: 2.5vmin; /* Un poco más grueso */
   background-image: linear-gradient(
       to left,
@@ -1172,4 +1172,5 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove("not-loaded");
       });
     });
+
   </script>
